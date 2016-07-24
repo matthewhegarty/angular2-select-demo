@@ -1,0 +1,7 @@
+app/*.js
+app/*.js.map
+/node_modules
+/typings
+
+npm-debug.log
+*.swp
