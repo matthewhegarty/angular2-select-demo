@@ -1,6 +1,7 @@
 {
   "name": "angular2-select-demo",
   "version": "1.0.0-alpha.0",
+  "description": "Demo application for angular2-select component.",
   "scripts": {
     "start": "tsc && concurrently \"npm run tsc:w\" \"npm run lite\" ",
     "lite": "lite-server",
@@ -9,7 +10,23 @@
     "tsc:w": "tsc -w",
     "typings": "typings"
   },
-  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/basvandenberg/angular2-select-demo.git"
+  },
+  "keywords": [
+    "angular",
+    "angular2",
+    "select",
+    "select2"
+  ],
+  "author": "Bastiaan van den Berg <b.a.vandenberg@gmail.com>",
+  "license": "ICS",
+  "bugs": {
+    "url": "https://github.com/basvandenberg/angular2-select-demo/issues"
+  },
+  "homepage": "https://github.com/basvandenberg/angular2-select-demo#readme",
+
   "dependencies": {
     "@angular/common": "2.0.0-rc.4",
     "@angular/compiler": "2.0.0-rc.4",
