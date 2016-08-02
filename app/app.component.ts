@@ -9,18 +9,31 @@ import {SELECT_DIRECTIVES} from 'angular2-select';
 <h1>Angular 2 select demo app</h1>
 <form
     [formGroup]="form">
-	<ng-select
-		[options]="options"
-		[multiple]="multiple"
-		[placeholder]="placeholder"
-        formControlName="select"
-		allowClear="true"
-        name="value">
+	
+    <ng-select
+		[options]="options0"
+		[multiple]="multiple0"
+		placeholder="Select one"
+        formControlName="selectSingle"
+		allowClear="true">
 	</ng-select>
+    
+    <div>
+	    Selected option id: {{form.value['selectSingle']}}
+    </div>
+    <hr>
+
+	<ng-select
+		[options]="options1"
+		[multiple]="multiple1"
+		placeholder="Select multiple"
+        formControlName="selectMultiple">
+	</ng-select>
+
+    <div>
+	    Selected option id: {{form.value['selectMultiple']}}
+    </div>
 </form>
-<div>
-	Selected option id: {{form.value['select']}}
-</div>
 `,
     directives: [
         REACTIVE_FORM_DIRECTIVES,
@@ -32,9 +45,9 @@ export class AppComponent implements OnInit {
 
     form: FormGroup;
 
-    placeholder = 'Select user';
-    multiple = false;
-    options = [];
+    multiple0: boolean = false;
+    multiple1: boolean = true;
+    options: Array<any> = [];
     selection: Array<string>;
 
     constructor() {
@@ -49,12 +62,14 @@ export class AppComponent implements OnInit {
             };
         }
 
-        this.options = opts;
+        this.options0 = opts.slice(0);
+        this.options1 = opts.slice(0);
     }
 
     ngOnInit() {
         this.form = new FormGroup({});
-        this.form.addControl('select', new FormControl(''));
+        this.form.addControl('selectSingle', new FormControl(''));
+        this.form.addControl('selectMultiple', new FormControl(''));
     }
 }
 
