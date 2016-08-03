@@ -7,9 +7,10 @@ import {SELECT_DIRECTIVES} from 'angular2-select';
     selector: 'angular2-select-demo-app',
     template: `
 <h1>Angular 2 select demo app</h1>
-<form
+<form style="padding:18px;max-width:800px;"
     [formGroup]="form">
 	
+    <div style="margin:5px 0;font-weight:600;">Single select example</div>
     <ng-select
 		[options]="options0"
 		[multiple]="multiple0"
@@ -18,11 +19,13 @@ import {SELECT_DIRECTIVES} from 'angular2-select';
 		allowClear="true">
 	</ng-select>
     
-    <div>
+    <div style="margin:10px 0 20px 0;color:#666;font-size:11pt;font-style:italic;">
 	    Selected option id: {{form.value['selectSingle']}}
     </div>
-    <hr>
 
+    <hr style="margin: 18px 0;">
+
+    <div style="margin:5px 0;font-weight:600;">Multilpe select example</div>
 	<ng-select
 		[options]="options1"
 		[multiple]="multiple1"
@@ -30,7 +33,7 @@ import {SELECT_DIRECTIVES} from 'angular2-select';
         formControlName="selectMultiple">
 	</ng-select>
 
-    <div>
+    <div style="margin:10px 0 20px 0;color:#666;font-size:11pt;font-style:italic;">
 	    Selected option id: {{form.value['selectMultiple']}}
     </div>
 </form>
