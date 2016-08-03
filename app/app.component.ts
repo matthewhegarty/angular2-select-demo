@@ -47,7 +47,8 @@ export class AppComponent implements OnInit {
 
     multiple0: boolean = false;
     multiple1: boolean = true;
-    options: Array<any> = [];
+    options0: Array<any> = [];
+    options1: Array<any> = [];
     selection: Array<string>;
 
     constructor() {
