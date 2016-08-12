@@ -1,7 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {REACTIVE_FORM_DIRECTIVES, FormControl, FormGroup} from '@angular/forms';
-
-import {SELECT_DIRECTIVES} from 'angular2-select';
+import {FormControl, FormGroup} from '@angular/forms';
 
 @Component({
     selector: 'angular2-select-demo-app',
@@ -36,12 +34,7 @@ import {SELECT_DIRECTIVES} from 'angular2-select';
     <div style="margin:10px 0 20px 0;color:#666;font-size:11pt;font-style:italic;">
 	    Selected option id: {{form.value['selectMultiple']}}
     </div>
-</form>
-`,
-    directives: [
-        REACTIVE_FORM_DIRECTIVES,
-		SELECT_DIRECTIVES
-    ]
+</form>`
 })
 
 export class AppComponent implements OnInit {

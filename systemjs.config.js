@@ -40,8 +40,6 @@
         'http',
         'platform-browser',
         'platform-browser-dynamic',
-        'router',
-        'router-deprecated',
         'upgrade',
     ];
 
