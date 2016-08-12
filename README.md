@@ -14,7 +14,7 @@ npm install
 Build application and start local server:
 
 ```
-npm start
+npm run start
 ```
 
 The demo application should open in your web browser automatically.
