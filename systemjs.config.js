@@ -4,62 +4,49 @@
  */
 (function(global) {
 
+    var paths = {
+        'npm:': 'node_modules/'
+    }
+
     // map tells the System loader where to look for things
     var map = {
-        'app': 'app', // 'dist',
-        '@angular': 'node_modules/@angular',
-        'angular2-in-memory-web-api': 'node_modules/angular2-in-memory-web-api',
-        'rxjs': 'node_modules/rxjs',
-        'angular2-select': 'node_modules/angular2-select'
+        'app': 'app',
+
+        // angular bundles
+        '@angular/core': 'npm:@angular/core/bundles/core.umd.js',
+        '@angular/common': 'npm:@angular/common/bundles/common.umd.js',
+        '@angular/compiler': 'npm:@angular/compiler/bundles/compiler.umd.js',
+        '@angular/platform-browser': 'npm:@angular/platform-browser/bundles/platform-browser.umd.js',
+        '@angular/platform-browser-dynamic': 'npm:@angular/platform-browser-dynamic/bundles/platform-browser-dynamic.umd.js',
+        '@angular/http': 'npm:@angular/http/bundles/http.umd.js',
+        '@angular/forms': 'npm:@angular/forms/bundles/forms.umd.js',
+
+        'angular2-in-memory-web-api': 'npm:angular2-in-memory-web-api',
+        'rxjs': 'npm:rxjs',
+        'angular2-select': 'npm:angular2-select'
     };
 
     // packages tells the System loader how to load when no filename and/or no extension
     var packages = {
         'app': { 
-            main: 'main.js',
+            main: './main.js',
             defaultExtension: 'js'
         },
         'rxjs': {
             defaultExtension: 'js'
         },
         'angular2-in-memory-web-api': {
-            main: 'index.js', 
+            main: './index.js', 
             defaultExtension: 'js'
         },
         'angular2-select': {
-            main: 'index.js',
+            main: './index.js',
             defaultExtension: 'js'
         }
     };
 
-    var ngPackageNames = [
-        'common',
-        'compiler',
-        'core',
-        'forms',
-        'http',
-        'platform-browser',
-        'platform-browser-dynamic',
-        'upgrade',
-    ];
-
-    // Individual files (~300 requests):
-    function packIndex(pkgName) {
-        packages['@angular/'+pkgName] = { main: 'index.js', defaultExtension: 'js' };
-    }
-
-    // Bundled (~40 requests):
-    function packUmd(pkgName) {
-        packages['@angular/'+pkgName] = { main: '/bundles/' + pkgName + '.umd.js', defaultExtension: 'js' };
-    }
-
-    // Most environments should use UMD; some (Karma) need the individual index files
-    var setPackageConfig = System.packageWithIndex ? packIndex : packUmd;
-
-    // Add package entries for angular packages
-    ngPackageNames.forEach(setPackageConfig);
-
     var config = {
+        paths: paths,
         map: map,
         packages: packages
     };
