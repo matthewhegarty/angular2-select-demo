@@ -1,6 +1,6 @@
 {
   "name": "angular2-select-demo",
-  "version": "1.0.0-alpha.5",
+  "version": "1.0.0-alpha.6",
   "description": "Demo application for angular2-select component.",
   "scripts": {
     "start": "tsc && concurrently \"npm run tsc:w\" \"npm run lite\" ",
