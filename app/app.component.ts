@@ -11,11 +11,12 @@ import {FormControl, FormGroup} from '@angular/forms';
 	
     <div style="margin:5px 0;font-weight:600;">Single select example</div>
     <ng-select
+        #singleSelectComponent
 		[options]="optionsSingle"
 		[multiple]="multipleSingle"
 		placeholder="Select one"
         formControlName="selectSingle"
-		allowClear="true"
+		[allowClear]="allowClear"
         (opened)="onSingleOpened()"
         (closed)="onSingleClosed()"
         (selected)="onSingleSelected($event)"
@@ -41,6 +42,7 @@ import {FormControl, FormGroup} from '@angular/forms';
 
     <div style="margin:5px 0;font-weight:600;">Multilpe select example</div>
 	<ng-select
+        #multipleSelectComponent
 		[options]="optionsMultiple"
 		[multiple]="multipleMultiple"
 		placeholder="Select multiple"
@@ -61,6 +63,8 @@ import {FormControl, FormGroup} from '@angular/forms';
     
 <button
     (click)="onMultipleResetClick()">Reset</button>
+<button
+    (click)="onMultipleSetOptions1Click()">Set options 0, 1, A, B</button>
 `})
 
 export class AppComponent implements OnInit {
@@ -68,13 +72,22 @@ export class AppComponent implements OnInit {
     formSingle: FormGroup;
     multipleSingle: boolean = false;
     optionsSingle: Array<any> = [];
+    alternativeOptionsSingle: Array<any> = [];
     initialValueSingle: string = '22';
+    allowClear: boolean = true;
 
     formMultiple: FormGroup;
     multipleMultiple: boolean = true;
     optionsMultiple: Array<any> = [];
-    initialValueMultiple: Array<string> = ['2', '22', '66'];
+    alternativeOptionsMultiple: Array<any> = [];
+    initialValueMultiple: Array<string> = ['0', '2', '22', '66'];
     
+    opts;
+    alternativeOpts;
+
+    @ViewChild('singleSelectComponent') singleSelectComponent;
+    @ViewChild('multipleSelectComponent') multipleSelectComponent;
+
     @ViewChild('preSingle') preSingle;
     @ViewChild('preMultiple') preMultiple;
 
@@ -84,17 +97,31 @@ export class AppComponent implements OnInit {
     constructor() {
 
         let numOptions = 100;
-        let opts = new Array(numOptions);
+        this.opts = new Array(numOptions);
 
         for (let i = 0; i < numOptions; i++) {
-            opts[i] = {
+            this.opts[i] = {
                 value: i.toString(),
                 label: i.toString()
             };
         }
 
-        this.optionsSingle = opts.slice(0);
-        this.optionsMultiple = opts.slice(0);
+        this.alternativeOpts = [{
+            value: '0',
+            label: '0'
+        }, {
+            value: '1',
+            label: '1'
+        }, {
+            value: 'A',
+            label: 'A'
+        }, {
+            value: 'B',
+            label: 'B'
+        }]
+
+        this.optionsSingle = this.opts.slice(0);
+        this.optionsMultiple = this.opts.slice(0);
     }
 
     ngOnInit() {
@@ -149,6 +176,10 @@ export class AppComponent implements OnInit {
 
     onMultipleResetClick() {
         this.formMultiple.reset();
+    }
+
+    onMultipleSetOptions1Click() {
+        this.optionsMultiple = this.alternativeOpts.slice(0);
     }
 
     private logSingle(msg: string) {
