@@ -40,7 +40,7 @@ import {FormControl, FormGroup} from '@angular/forms';
 <form style="padding:18px;max-width:800px;"
     [formGroup]="formMultiple">
 
-    <div style="margin:5px 0;font-weight:600;">Multilpe select example</div>
+    <div style="margin:5px 0;font-weight:600;">Multiple select example</div>
 	<ng-select
         #multipleSelectComponent
 		[options]="optionsMultiple"
