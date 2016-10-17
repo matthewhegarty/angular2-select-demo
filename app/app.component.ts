@@ -1,5 +1,6 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
+import {SelectComponent} from "angular2-select/src/select.component";
 
 @Component({
     selector: 'angular2-select-demo-app',
@@ -85,7 +86,8 @@ export class AppComponent implements OnInit {
     opts;
     alternativeOpts;
 
-    @ViewChild('singleSelectComponent') singleSelectComponent;
+    @ViewChild('singleSelectComponent') singleSelectComponent: SelectComponent;
+
     @ViewChild('multipleSelectComponent') multipleSelectComponent;
 
     @ViewChild('preSingle') preSingle;
