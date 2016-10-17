@@ -88,7 +88,7 @@ export class AppComponent implements OnInit {
 
     @ViewChild('singleSelectComponent') singleSelectComponent: SelectComponent;
 
-    @ViewChild('multipleSelectComponent') multipleSelectComponent;
+    @ViewChild('multipleSelectComponent') multipleSelectComponent: SelectComponent;
 
     @ViewChild('preSingle') preSingle;
     @ViewChild('preMultiple') preMultiple;
